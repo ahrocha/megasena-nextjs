@@ -10,7 +10,7 @@ interface MegasenaData {
 
 export default function Home() {
   const [megasenaData, setMegasenaData] = useState<MegasenaData | null>(null);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     async function fetchData() {
@@ -19,8 +19,12 @@ export default function Home() {
         if (!res.ok) throw new Error("Failed to fetch Mega Sena data");
         const data = await res.json();
         setMegasenaData(data);
-      } catch (err: any) {
-        setError(err.message);
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          setError(err.message);
+        } else {
+          setError("An unknown error occurred");
+        }
       }
     }
 
