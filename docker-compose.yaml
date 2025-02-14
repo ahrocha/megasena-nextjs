@@ -9,3 +9,15 @@ services:
     environment:
       - NODE_ENV=production
     restart: always
+
+    networks:
+      default:
+        ipv4_address: 172.23.0.2
+
+networks:
+  default:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.23.0.0/24
