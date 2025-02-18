@@ -3,13 +3,16 @@
 import { useEffect, useState } from "react";
 import { fetchMegaSenaDataByNumber, MegasenaData } from "@/services/api";
 import MegasenaResults from "@/components/MegasenaResults";
+import { useParams, useRouter } from "next/navigation";
 
-export default function MegaSenaDrawPage({ params }: { readonly params: { readonly nr: string } }) {
+export default function MegaSenaDrawPage() {
+  const params = useParams();
+  const router = useRouter();
   const [megasenaData, setMegasenaData] = useState<MegasenaData | null>(null);
   const [error, setError] = useState<string | null>(null);
   
   useEffect(() => {
-    if (!params.nr) {
+    if (!params.nr || typeof params.nr !== "string") {
       setError("Invalid draw number");
       return;
     }
@@ -20,10 +23,12 @@ export default function MegaSenaDrawPage({ params }: { readonly params: { readon
           setMegasenaData(data);
         } else {
           setError("No data found for this draw number");
+          // redirect to /megasena/ultima
+          router.push("/megasena/ultima");
         }
       })
       .catch((err) => setError(err.message));
-  }, [params.nr]);
+  }, [params.nr, router]);
   
   if (error) return <p className="text-red-500">Error: {error}</p>;
   if (!megasenaData) return <p>Loading...</p>;

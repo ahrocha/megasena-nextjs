@@ -2,12 +2,11 @@ export interface MegasenaData {
     nrSorteio: number;
     dtSorteio: string;
     dsSorteadosSorteio: string;
-    // the property below can be a number or null:
     next: number | null;
     previous: number | null;
 }
 
-export async function fetchMegaSenaData(): Promise<MegasenaData | null> {
+export async function fetchMegaSena(): Promise<MegasenaData | null> {
     try {
         const res = await fetch("https://api.megasena.hurpia.com.br/megasena/ultima");
         if (!res.ok) throw new Error("Failed to fetch Mega Sena data");

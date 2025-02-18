@@ -3,7 +3,7 @@ import { formatDate } from "../utils/formatDate";
 import Link from "next/link";
 
 interface Props {
-  megasenaData: MegasenaData;
+  readonly megasenaData: MegasenaData;
 }
 
 export default function MegasenaResults({ megasenaData }: Props) {
@@ -22,14 +22,14 @@ export default function MegasenaResults({ megasenaData }: Props) {
         <div className="flex gap-4 items-center">
             {megasenaData.previous && (
                 <Link href={`/megasena/${megasenaData.previous}`} className="text-blue-500">
-                Sorteio Anterior
+                  Sorteio Anterior
                 </Link>
             )}
             </div>
         <div className="flex gap-4 items-center">
             {megasenaData.next && (
                 <Link href={`/megasena/${megasenaData.next}`} className="text-blue-500">
-                Próximo Sorteio
+                  Próximo Sorteio
                 </Link>
             )}
             </div>
