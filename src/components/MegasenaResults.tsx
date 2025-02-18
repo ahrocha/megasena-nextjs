@@ -1,5 +1,6 @@
 import { MegasenaData } from "@/services/api";
 import { formatDate } from "../utils/formatDate";
+import Link from "next/link";
 
 interface Props {
   megasenaData: MegasenaData;
@@ -17,6 +18,22 @@ export default function MegasenaResults({ megasenaData }: Props) {
       <h2 className="text-4xl block text-center">
         Números Sorteados: <br /> {megasenaData.dsSorteadosSorteio}
       </h2>
+      <div>
+        <div className="flex gap-4 items-center">
+            {megasenaData.previous && (
+                <Link href={`/megasena/${megasenaData.previous}`} className="text-blue-500">
+                Sorteio Anterior
+                </Link>
+            )}
+            </div>
+        <div className="flex gap-4 items-center">
+            {megasenaData.next && (
+                <Link href={`/megasena/${megasenaData.next}`} className="text-blue-500">
+                Próximo Sorteio
+                </Link>
+            )}
+            </div>
+      </div>
     </div>
   );
 }
