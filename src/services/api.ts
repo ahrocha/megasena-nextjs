@@ -6,7 +6,7 @@ export interface MegasenaData {
     previous: number | null;
 }
 
-export async function fetchMegaSena(): Promise<MegasenaData | null> {
+export async function fetchMegaSenaData(): Promise<MegasenaData | null> {
     try {
         const res = await fetch("https://api.megasena.hurpia.com.br/megasena/ultima");
         if (!res.ok) throw new Error("Failed to fetch Mega Sena data");
