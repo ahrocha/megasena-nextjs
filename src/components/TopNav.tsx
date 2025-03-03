@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-// import Link from 'next/link';
+import Link from 'next/link';
 
 const TopNav: React.FC = () => {
 
@@ -32,7 +32,9 @@ const TopNav: React.FC = () => {
         <div className="hidden sm:ml-6 sm:block">
           <div className="flex space-x-4">
             <a href="#" className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Home</a>
-            <a href="#" className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Resultados</a>
+            <a href="#" className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+              <Link href={'/resultados'} >Resultados</Link>
+            </a>
             <a href="#" className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Calendario</a>
             <a href="#" className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Contato</a>
           </div>

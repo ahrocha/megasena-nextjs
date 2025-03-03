@@ -1,7 +1,7 @@
 export interface MegasenaData {
-    nrSorteio: number;
-    dtSorteio: string;
-    dsSorteadosSorteio: string;
+    numero: number;
+    data: string;
+    sorteados: string;
     next: number | null;
     previous: number | null;
 }
@@ -24,6 +24,17 @@ export async function fetchMegaSenaDataByNumber(nr: string): Promise<MegasenaDat
         return await res.json();
     } catch (err: unknown) {
         console.error("Error fetching Mega Sena data for draw", nr, err);
+        return null;
+    }
+}
+
+export async function fetchAllMegaSenaData(): Promise<MegasenaData[] | null> {
+    try {
+        const res = await fetch("https://api.megasena.hurpia.com.br/megasena");
+        if (!res.ok) throw new Error("Failed to fetch Mega Sena data");
+        return await res.json();
+    } catch (err: unknown) {
+        console.error("Error fetching Mega Sena data:", err);
         return null;
     }
 }

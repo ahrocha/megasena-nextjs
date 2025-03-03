@@ -10,13 +10,13 @@ export default function MegasenaResults({ megasenaData }: Props) {
   return (
     <div className="flex gap-4 items-center flex-col">
       <h1 className="text-medium block text-center">
-        Sorteio Número: <br /> {megasenaData.nrSorteio}
+        Sorteio Número: <br /> {megasenaData.numero}
       </h1>
       <h1 className="text-medium block text-center">
-        Data do Sorteio: <br /> {formatDate(megasenaData.dtSorteio)}
+        Data do Sorteio: <br /> {formatDate(megasenaData.data)}
       </h1>
       <h2 className="text-4xl block text-center">
-        Números Sorteados: <br /> {megasenaData.dsSorteadosSorteio}
+        Números Sorteados: <br /> {megasenaData.sorteados}
       </h2>
       <div>
         <div className="flex gap-4 items-center">
