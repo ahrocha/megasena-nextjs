@@ -15,12 +15,9 @@ export default function MegaSenaDrawPage() {
     fetchAllMegaSenaData()
       .then((data) => {
         if (data) {
-          // inverse data order
-          // data = data.reverse();
           setMegasenaData(data);
         } else {
           setError("No data found for this draw number");
-          // redirect to /megasena/ultima
           router.push("/megasena/ultima");
         }
       })
