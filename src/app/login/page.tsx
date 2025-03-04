@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { userLogin } from "@/services/api";
 
 export default function LoginPage() {
