@@ -24,6 +24,7 @@ export default function LoginPage() {
             const success = await userLogin(email, password);
             if (success) {
                 console.log("User logged in successfully");
+                console.log(success);
             } else {
                 console.log("Failed to log in");
             }

@@ -6,8 +6,8 @@ export interface MegasenaData {
     previous: number | null;
 }
 
-const server = "https://api.megasena.hurpia.com.br";
-// const server = "http://localhost:8080";
+// const server = "https://api.megasena.hurpia.com.br";
+const server = "http://localhost:8080";
 
 export async function fetchMegaSenaData(): Promise<MegasenaData | null> {
     try {
@@ -54,10 +54,32 @@ export async function userLogin(email: string, password: string): Promise<boolea
             credentials: "include",
         });
         if (!res.ok) throw new Error("Failed to login");
-        console.log(res.json());
+        const data = await res.json();
+        console.log(data.token);
+        userMe(data.token);
         return res.status === 200;
     } catch (err: unknown) {
         console.error("Error logging in:", err);
+        return false;
+    }
+}
+
+export async function userMe(token: string): Promise<boolean> {
+    try {
+        const url = server + "/me";
+        const res = await fetch(url, {
+            method: "GET",
+            credentials: "include",
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
+        });
+        if (!res.ok) throw new Error("Failed to get user info");
+        const data = await res.json();
+        console.log(data);
+        return res.status === 200;
+    } catch (err: unknown) {
+        console.error("Error getting user info:", err);
         return false;
     }
 }
