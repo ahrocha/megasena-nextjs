@@ -7,7 +7,8 @@ export interface MegasenaData {
 }
 
 // const server = "https://api.megasena.hurpia.com.br";
-const server = "http://localhost:8080";
+// const server = "http://localhost:8080";
+const server = "https://u4bbtgpfv6.us-west-2.awsapprunner.com";
 
 export async function fetchMegaSenaData(): Promise<MegasenaData | null> {
     try {
